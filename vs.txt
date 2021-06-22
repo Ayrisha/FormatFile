@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
+#define SIZE 1000
+
+FILE* f;
+FILE* g;
+
+int main(){
+f = fopen("input.txt", "rt");
+g = fopen("output.txt", "wt");
+return 0;
+}
