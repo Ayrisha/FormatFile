@@ -9,6 +9,102 @@
 FILE* f;
 FILE* g;
 
+void Format(char* str) {
+	int n = strlen(str);
+	for (int i = 0; i < n; ++i) {
+		if (str[i] == '/' && str[i + 1] == '/') {
+			fprintf(g, " /*");
+			i += 2;
+			while (str[i] != '\n') {
+				fprintf(g, "%c", str[i]);
+				i++;
+			}
+			fprintf(g, "*/\n");
+			PrintProbel(k);
+			p = 1;
+		}
+		else if (str[i] == ';') {
+			if (str[i + 1] == '/')
+				fprintf(g, "%c", str[i]);
+			else if (str[i + 1] == ' ') {
+				fprintf(g, "%c", str[i]);
+			}
+			else {
+				fprintf(g, "%c\n", str[i]);
+				PrintProbel(k);
+			}
+			p = 1;
+		}
+		else if (str[i] == '#' && i != 0) {
+			fprintf(g, "\n%c", str[i]);
+		}
+		else if (str[i] == ',') {
+			fprintf(g, "%c ", str[i]);
+		}
+		else if ((str[i] == '+' && str[i + 1] != '+' && str[i - 1] != '+' && str[i + 1] <= '9' && str[i + 1] >= '0')
+			|| str[i] == '-' || (str[i] == '*' && (str[i + 1] <= '9' && str[i + 1] >= '0')) || str[i] == '<' ||
+			str[i] == '>') {
+			fprintf(g, " %c ", str[i]);
+		}
+		else if ((str[i] == '=' || str[i] == '<' || str[i] == '>') && str[i + 1] == '=') {
+			fprintf(g, " %c%c ", str[i], str[i + 1]);
+			i++;
+		}
+		else if (str[i] == '+' && str[i + 1] == '=') {
+			fprintf(g, " %c%c ", str[i], str[i + 1]);
+			i++;
+		}
+		else if (str[i] == '!' && str[i + 1] == '=') {
+			fprintf(g, " %c%c ", str[i], str[i + 1]);
+			i++;
+		}
+		else if (str[i] == '=') {
+			fprintf(g, " %c ", str[i]);
+		}
+		else if (str[i] == '%' && (str[i + 1] <= '9' && str[i + 1] >= '0')) {
+			fprintf(g, " %c ", str[i]);
+		}
+		else if (str[i] == '}' && p == 1) {
+			fprintf(g, "%c\n", str[i]);
+			p = 1;
+			k--;
+			PrintProbel(k);
+		}
+		else if (str[i] == '}' && p == 0) {
+			PrintProbel(k);
+			fprintf(g, "\n%c\n", str[i]);
+			p = 1;
+			k--;
+			PrintProbel(k);
+		}
+		else if (str[i] == '{' && p == 0) {
+			k++;
+			PrintProbel(k);
+			fprintf(g, "\n");
+			PrintProbel(k);
+			fprintf(g, "%c\n", str[i]);
+			p = 1;
+			PrintProbel(k);
+		}
+		else if (str[i] == '{' && p == 1) {
+			k++;
+			fprintf(g, "%c\n", str[i]);
+			p = 1;
+			PrintProbel(k);
+
+		}
+		else if (p == 0 && str[i] == '\n') {
+			fprintf(g, "%c", str[i]);
+			p = 1;
+			PrintProbel(k);
+		}
+		else if (str[i] != '\n') {
+			fprintf(g, "%c", str[i]);
+			p = 0;
+		}
+	}
+}
+
 int main(){
 f = fopen("input.txt", "rt");
 g = fopen("output.txt", "wt");
