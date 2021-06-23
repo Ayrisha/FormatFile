@@ -105,6 +105,29 @@ void Format(char* str) {
 	}
 }
 
+int push_char(char stack[], unsigned cur, char symb)
+{
+	if (cur < SIZE)
+	{
+		stack[cur++] = symb;
+	}
+	return cur;
+}
+
+int pop_char(char stack[], unsigned cur)
+{
+	if (cur != 0)
+	{
+		--cur;
+	}
+	return cur;
+}
+
+int is_empty_char(const char stack[], unsigned cur)
+{
+	return !cur;
+}
+
 int main(){
 f = fopen("input.txt", "rt");
 g = fopen("output.txt", "wt");
