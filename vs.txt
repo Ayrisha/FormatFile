@@ -8,6 +8,15 @@
 
 FILE* f;
 FILE* g;
+FILE* h;
+
+void PrintProbel(int k) {
+	int l = k * 2;
+	while (l != 0) {
+		fprintf(g, " ");
+		l--;
+	}
+}
 
 void Format(char* str) {
 	int n = strlen(str);
@@ -213,5 +222,12 @@ int NaZna() {
 int main(){
 f = fopen("input.txt", "rt");
 g = fopen("output.txt", "wt");
-return 0;
+char str[SIZE] = { 0 };
+int w = 0, m = 0, r = -5, cy = 0;
+while (fgets(str, 300, f) != NULL) {
+	Format(str);
+}
+fclose(g);
+g = fopen("output.txt", "rt");
+h = fopen("rezput.txt", "wt");
 }
