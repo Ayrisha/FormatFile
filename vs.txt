@@ -155,7 +155,45 @@ int is_empty_char(const char stack[], unsigned cur)
 {
 	return !cur;
 }
-
+int Cycle() {
+	int cy = 0;
+	int br = 0;
+	int pr = 0;
+	char str[SIZE] = { 0 };
+	fclose(g);
+	g = fopen("output.txt", "rt");
+	while (fgets(str, 300, g) != NULL) {
+		int n = strlen(str);
+		for (int i = 0; i < n; i++) {
+			if (str[i] == 'f' && str[i + 1] == 'o' && str[i + 2] == 'r') {
+				for (int j = i + 2; j < n; j++) {
+					if (str[j] == ';')
+						pr++;
+					if (pr == 2) {
+						if (str[j] == 'i' && str[j + 1] != '-' && str[j + 2] != '-' && str[j + 1] != '+' && str[j + 2] != '+')
+							cy++;
+						if ((str[j] == '+' || str[j] == '-') && str[j + 1] != '+' && str[j + 1] != '-' && str[j + 2] != 'i')
+							cy++;
+					}
+				}
+			}
+			if (str[i] == 'w' && str[i + 1] == 'h' && str[i + 2] == 'i' && str[i + 3] == 'l' && str[i + 4] == 'e') {
+				for (int j = i + 4; j < n; j++) {
+					if (str[j] == '(' && str[j + 1] == '1' && str[j + 2] == ')') {
+						cy++;
+					}
+				}
+			}
+			if (str[i] == 'b' && str[i + 1] == 'r' && str[i + 2] == 'e' && str[i + 3] == 'a' && str[i + 4] == 'k') {
+				br = 1;
+			}
+		}
+		pr = 0;
+	}
+	if (cy > 0 && br == 1)
+		cy = 0;
+	return cy;
+}
 int NaZna() {
 	fseek(g, 0L, SEEK_SET);
 	char str[SIZE] = { 0 };
