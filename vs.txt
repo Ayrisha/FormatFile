@@ -268,4 +268,15 @@ while (fgets(str, 300, f) != NULL) {
 fclose(g);
 g = fopen("output.txt", "rt");
 h = fopen("rezput.txt", "wt");
+cy = Cycle();
+	if (cy == 0)
+		fprintf(h, "Зацикленности нет\n");
+	else
+		fprintf(h, "Зацикленность есть\n");v
+fclose(g);
+	g = fopen("output.txt", "rt");
+	fprintf(h, "\nОтформатированная программа:\n\n");
+	while (fgets(str, 300, g) != NULL) {
+		fprintf(h, "%s", str);
+	}
 }
