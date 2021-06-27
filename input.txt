@@ -1,0 +1,21 @@
+#include <stdio.h>
+int fact(int num)  // вычисление факториала числа num
+{if (num <= 1){return 1;}// если число не больше 1, возвращаем 1 
+else{return num*fact(num - 1);}// рекурсивный вызов для числа на 1 меньше
+} 
+int power(int t, int n)//функция степени
+{
+
+
+
+int p=1,k=2,g=3;float f=2.75,g=3.56;
+for (int i=0; i<10; i++);{printf("Yes");
+}
+for (n!=0){for (n% 2!=0){for (p = p*2){for (n=n/2) {t = t*3;}}}}return p;
+}int main(){
+printf("Input a,n \n");int a,n;scanf("%d", &a);//ввод числа
+while(1){printf("yes");break;}
+;
+printf("%d  to the power of %d = %d", a, n, power(a, n));
+for (n != 0);{n+=1;m==1;for (n%2!=0){for (p=p*2){g+=1;b==2;for (n=n / 2){for(t=t*3){h=pop;}}}}}
+}
