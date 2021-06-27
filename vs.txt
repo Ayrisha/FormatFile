@@ -9,6 +9,10 @@
 FILE* f;
 FILE* g;
 FILE* h;
+int p = 0;
+int k = 0;
+int col = 0;
+char prob[] = "    ";
 
 void PrintProbel(int k) {
 	int l = k * 2;
